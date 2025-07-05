@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 const slides = [
   {
-    image: '/images/hot.jpg',
+    image: `${process.env.PUBLIC_URL}/images/hot.jpg`,
     title: 'Ancient Architure',
     location: 'Gede Ruins, Kilifi County',
     price: '28000',
   },
   {
-    image: '/images/hot.jpg',
+    image: `${process.env.PUBLIC_URL}/images/hot.jpg`,
     title: 'Beach Paradise',
     location: 'Diani, Kwale County',
     price: '25000',
   },
   {
-    image: '/images/hot.jpg',
+    image: `${process.env.PUBLIC_URL}/images/hot.jpg`,
     title: 'Island Escape',
     location: 'Lamu Old Town, Lamu County',
     price: '24000',
@@ -89,6 +89,7 @@ const Hot = () => {
 };
 
 export default Hot;
+
 
 
 

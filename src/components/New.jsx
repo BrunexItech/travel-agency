@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const hotels = [
   {
     id: 1,
-    image: '/images/new1.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new1.jpg`,
     title: 'Swahili Beach Resort',
     reviews: '60 Reviews',
     features: {
@@ -19,7 +20,7 @@ const hotels = [
   },
   {
     id: 2,
-    image: '/images/new2.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new2.jpg`,
     title: 'Diani Reef Hotel',
     reviews: '60 Reviews',
     features: {
@@ -34,7 +35,7 @@ const hotels = [
   },
   {
     id: 3,
-    image: '/images/new3.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new3.jpg`,
     title: 'Mombasa Serena Hotel',
     reviews: '60 Reviews',
     features: {
@@ -49,7 +50,7 @@ const hotels = [
   },
   {
     id: 4,
-    image: '/images/new4.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new4.jpg`,
     title: 'Voyager Beach Resort',
     reviews: '60 Reviews',
     features: {
@@ -60,11 +61,11 @@ const hotels = [
       aircon: 'Yes',
       restaurant: 'Yes',
     },
-    price: '2300',
+    price: '23000',
   },
   {
     id: 5,
-    image: '/images/new5.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new5.jpg`,
     title: 'Neptune Village Resort',
     reviews: '60 Reviews',
     features: {
@@ -75,11 +76,11 @@ const hotels = [
       aircon: 'Yes',
       restaurant: 'Yes',
     },
-    price: '2000',
+    price: '20000',
   },
   {
     id: 6,
-    image: '/images/new6.jpg',
+    image: `${process.env.PUBLIC_URL}/images/new6.jpg`,
     title: 'Sarova Whitesands Beach',
     reviews: '60 Reviews',
     features: {

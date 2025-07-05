@@ -62,7 +62,7 @@ const Footer = () => {
             {[...Array(8)].map((_, i) => (
               <img
                 key={i}
-                src={`/insta${i + 1}.jpg`}
+                src={`${process.env.PUBLIC_URL}/insta${i + 1}.jpg`}
                 alt={`insta-${i}`}
                 className="w-16 h-14 object-cover rounded-sm"
               />

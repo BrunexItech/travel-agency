@@ -18,7 +18,7 @@ const ArticlePage = () => {
     <div className="flex flex-col md:w-2/3 p-8 mt-12 ">
       {/* Hero Image */}
       <img
-        src="images/blog1.jpg"
+        src={`${process.env.PUBLIC_URL}/images/blog1.jpg`}
         alt="Blog Hero"
         className="w-full h-auto"
       />
@@ -65,12 +65,12 @@ const ArticlePage = () => {
       {/* Inline Images */}
       <div className="flex flex-col md:flex-row gap-4 mt-4">
         <img
-          src="images/post1.jpg"
+          src={`${process.env.PUBLIC_URL}/images/post1.jpg`}
           alt="Post 1"
           className="w-full md:w-1/2 h-auto"
         />
         <img
-          src="images/post2.jpg"
+          src={`${process.env.PUBLIC_URL}/images/post2.jpg`}
           alt="Post 2"
           className="w-full md:w-1/2 h-auto"
         />
@@ -88,7 +88,7 @@ const ArticlePage = () => {
           {/* Image Holder */}
           <div className="relative w-12 h-12 group">
             <img
-              src="images/prev.jpg"
+              src={`${process.env.PUBLIC_URL}/images/prev.jpg`}
               alt="Prev"
               className="w-full h-full object-cover"
             />
@@ -109,7 +109,7 @@ const ArticlePage = () => {
           {/* Image Holder */}
           <div className="relative w-12 h-12 group">
             <img
-              src="images/next.jpg"
+              src={`${process.env.PUBLIC_URL}/images/next.jpg`}
               alt="Next"
               className="w-full h-full object-cover"
             />
@@ -125,7 +125,7 @@ const ArticlePage = () => {
         {/* Comment 1 */}
         <div className="flex items-start gap-4 mb-4">
           <img
-            src="images/user1.jpg"
+            src={`${process.env.PUBLIC_URL}/images/user1.jpg`}
             alt="Emily Blunt"
             className="w-12 h-12 rounded-full"
           />
@@ -144,7 +144,7 @@ const ArticlePage = () => {
         {/* Comment 2 */}
         <div className="flex items-start gap-4 mb-4 ml-8">
           <img
-            src="images/user2.jpg"
+            src={`${process.env.PUBLIC_URL}/images/user2.jpg`}
             alt="Elsie Cunningham"
             className="w-12 h-12 rounded-full"
           />
@@ -163,7 +163,7 @@ const ArticlePage = () => {
         {/* Comment 3 */}
         <div className="flex items-start gap-4 mb-4 ml-8">
           <img
-            src="images/user3.jpg"
+            src={`${process.env.PUBLIC_URL}/images/user3.jpg`}
             alt="Annie Stephane"
             className="w-12 h-12 rounded-full"
           />
@@ -182,7 +182,7 @@ const ArticlePage = () => {
         {/* Comment 4 */}
         <div className="flex items-start gap-4 mb-4 ml-8">
           <img
-            src="images/user4.jpg"
+            src={`${process.env.PUBLIC_URL}/images/user4.jpg`}
             alt="James Doe"
             className="w-12 h-12 rounded-full"
           />
@@ -201,7 +201,7 @@ const ArticlePage = () => {
         {/* Comment 5 */}
         <div className="flex items-start gap-4 mb-4">
           <img
-            src="images/user5.jpg"
+            src={`${process.env.PUBLIC_URL}/images/user5.jpg`}
             alt="Change Lee"
             className="w-12 h-12 rounded-full"
           />
@@ -233,12 +233,12 @@ const ArticlePage = () => {
           <input
             type="text"
             placeholder="Enter name"
-            className="flex-1 p-2 bg-white border border-gray-300 w-1/2"
+            className="flex-1 p-2 bg-white border border-gray-300 md:w-1/2"
           />
           <input
             type="email"
             placeholder="Enter email address"
-            className="flex-1 p-2 bg-white border border-gray-300 w-1/2"
+            className="flex-1 p-2 bg-white border border-gray-300 md:w-1/2"
           />
         </div>
         <input

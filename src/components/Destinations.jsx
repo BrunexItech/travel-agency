@@ -39,7 +39,7 @@ const Destinations = () => {
             className="relative group h-64 rounded-lg overflow-hidden shadow-lg"
           >
             <img
-              src={dest.image}
+              src={`${process.env.PUBLIC_URL}/${dest.image}`}
               alt={dest.title}
               className="w-full h-full object-cover"
             />

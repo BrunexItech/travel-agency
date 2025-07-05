@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
@@ -9,7 +8,7 @@ const Testimonials = () => {
       name: 'Christon Hall',
       text:
         'Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.',
-      image: '/images/man.jpg',
+      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
       rating: 4,
     },
     {
@@ -17,7 +16,7 @@ const Testimonials = () => {
       name: 'Rhoda Aquilla',
       text:
         'A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.',
-      image: '/images/woman.jpg',
+      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
       rating: 3,
     },
     {
@@ -25,7 +24,7 @@ const Testimonials = () => {
       name: 'David Alba',
       text:
         'Learning never stops, and growth is the key to success. Keep pushing your limits every day!',
-      image: '/images/man.jpg',
+      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
       rating: 5,
     },
     {
@@ -33,7 +32,7 @@ const Testimonials = () => {
       name: 'Clara Til',
       text:
         'Consistency is what transforms average into excellence. Keep going, you are doing great!',
-      image: '/images/woman.jpg',
+      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
       rating: 2,
     },
     {
@@ -41,7 +40,7 @@ const Testimonials = () => {
       name: 'Bonface Tim',
       text:
         'Learning never stops, and growth is the key to success. Keep pushing your limits every day!',
-      image: '/images/man.jpg',
+      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
       rating: 4,
     },
     {
@@ -49,12 +48,11 @@ const Testimonials = () => {
       name: 'Stacey Depy',
       text:
         'Consistency is what transforms average into excellence. Keep going, you are doing great!',
-      image: '/images/woman.jpg',
+      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
       rating: 2,
     },
   ];
 
-  // ✅ 1) Detect window size for responsiveness
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -68,13 +66,12 @@ const Testimonials = () => {
     return () => window.removeEventListener('resize', checkSize);
   }, []);
 
-  // ✅ 2) Group depending on device
   const pairs = [];
   if (isMobile) {
-    testimonials.forEach((t) => pairs.push([t])); // single card pairs
+    testimonials.forEach((t) => pairs.push([t]));
   } else {
     for (let i = 0; i < testimonials.length; i += 2) {
-      pairs.push(testimonials.slice(i, i + 2)); // pairs of 2
+      pairs.push(testimonials.slice(i, i + 2));
     }
   }
 
@@ -167,3 +164,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+

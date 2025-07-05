@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   FaSearch,
@@ -29,7 +28,7 @@ const Sidebar = () => {
         {/* Author Card */}
         <div className="bg-gray-100 p-4 rounded-lg shadow">
           <img
-            src="/images/author.jpg"
+            src={`${process.env.PUBLIC_URL}/images/author.jpg`}
             alt="Author"
             className="w-24 h-24 rounded-full mx-auto mb-4"
           />
@@ -46,77 +45,74 @@ const Sidebar = () => {
           </div>
 
           <p className="text-center text-gray-600 text-sm">
-            Boot camps have its supporters and its detractors. Some people do not
-            understand why you should have to spend money on boot camp when you can get.
+            Programming takes dedication and patience, but every bit of effort brings you closer to new skills and
+            endless opportunities. Stick with it, and you’ll unlock a future full of creativity, growth, and success.
           </p>
         </div>
 
         {/* Separator line */}
         <hr className="border-t border-gray-300" />
 
-{/* Popular Posts */}
-<div>
-  <h3 className="bg-yellow-400 text-white px-4 py-2 font-bold mb-4">
-    Popular Posts
-  </h3>
-  <div className="space-y-4">
-    <div className="flex items-center gap-4">
-      <img
-        src="/images/popular1.jpg"
-        alt="Popular Post"
-        className="w-16 h-16 object-cover rounded"
-      />
-      <div>
-        <h4 className="text-sm font-semibold">
-          Space The Final Frontier
-        </h4>
-        <p className="text-xs text-gray-500">12 hours ago</p>
-      </div>
-    </div>
-    <div className="flex items-center gap-4">
-      <img
-        src="/images/popular2.jpg"
-        alt="Popular Post"
-        className="w-16 h-16 object-cover rounded"
-      />
-      <div>
-        <h4 className="text-sm font-semibold">The Amazing Hubble</h4>
-        <p className="text-xs text-gray-500">1 day ago</p>
-      </div>
-    </div>
-    <div className="flex items-center gap-4">
-      <img
-        src="/images/popular3.jpg"
-        alt="Popular Post"
-        className="w-16 h-16 object-cover rounded"
-      />
-      <div>
-        <h4 className="text-sm font-semibold">Astronomy Or Astrology</h4>
-        <p className="text-xs text-gray-500">2 days ago</p>
-      </div>
-    </div>
-    <div className="flex items-center gap-4">
-      <img
-        src="/images/popular4.jpg"
-        alt="Popular Post"
-        className="w-16 h-16 object-cover rounded"
-      />
-      <div>
-        <h4 className="text-sm font-semibold">Asteroids Telescope</h4>
-        <p className="text-xs text-gray-500">3 days ago</p>
-      </div>
-    </div>
-  </div>
-</div>
+        {/* Popular Posts */}
+        <div>
+          <h3 className="bg-yellow-400 text-white px-4 py-2 font-bold mb-4">
+            Popular Posts
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/popular1.jpg`}
+                alt="Popular Post"
+                className="w-16 h-16 object-cover rounded"
+              />
+              <div>
+                <h4 className="text-sm font-semibold">
+                  Space The Final Frontier
+                </h4>
+                <p className="text-xs text-gray-500">12 hours ago</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/popular2.jpg`}
+                alt="Popular Post"
+                className="w-16 h-16 object-cover rounded"
+              />
+              <div>
+                <h4 className="text-sm font-semibold">The Amazing Hubble</h4>
+                <p className="text-xs text-gray-500">1 day ago</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/popular3.jpg`}
+                alt="Popular Post"
+                className="w-16 h-16 object-cover rounded"
+              />
+              <div>
+                <h4 className="text-sm font-semibold">Astronomy Or Astrology</h4>
+                <p className="text-xs text-gray-500">2 days ago</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/popular4.jpg`}
+                alt="Popular Post"
+                className="w-16 h-16 object-cover rounded"
+              />
+              <div>
+                <h4 className="text-sm font-semibold">Asteroids Telescope</h4>
+                <p className="text-xs text-gray-500">3 days ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-
-
-{/* AD goes here */}
-<div className="bg-gray-200 p-20 text-xl text-center flex flex-col">
-    <span className="text-gray-500">300X250 PX</span>
-  <span className="text-gray-500">AD GOES HERE</span>
-</div>
-
+        {/* AD goes here */}
+        <div className="bg-gray-200 p-20 text-xl text-center flex flex-col">
+          <span className="text-gray-500">300X250 PX</span>
+          <span className="text-gray-500">AD GOES HERE</span>
+        </div>
 
         {/* Post Categories */}
         <div>
@@ -152,16 +148,16 @@ const Sidebar = () => {
           <p className="text-xs text-gray-600 mb-4 mt-2">
             Subscribe to our newsletter to get the latest updates right in your inbox.
           </p>
-          <div className="flex flex-col sm:flex-row border border-gray-300 overflow-hidden w-full">
+          <div className="flex flex-row border border-gray-300 overflow-hidden w-full">
             <div className="flex items-center pl-3 pr-1 text-gray-500 bg-white">
               <FaEnvelope />
             </div>
             <input
               type="email"
               placeholder="Email Address"
-              className="flex-1 p-2 text-gray-700 focus:outline-none border-r-0 w-full"
+              className="flex-1 p-2 text-gray-700 focus:outline-none border-r-0 min-w-[150px] max-w-[300px]"
             />
-            <button className="bg-yellow-400 text-black px-4 py-2 w-full sm:w-auto">
+            <button className="bg-yellow-400 text-black px-4 py-2 whitespace-nowrap">
               Subscribe
             </button>
           </div>
@@ -200,3 +196,7 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+
+
+

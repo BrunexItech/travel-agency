@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Addition = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between bg-white px-8 py-16">
@@ -22,7 +23,7 @@ const Addition = () => {
       {/* Right Image Section */}
       <div className="md:w-1/2">
         <img
-          src="images/addition.jpg" // Replace with your image path
+          src={`${process.env.PUBLIC_URL}/images/addition.jpg`} 
           alt="Custom Package"
           className="w-full h-auto object-cover"
         />

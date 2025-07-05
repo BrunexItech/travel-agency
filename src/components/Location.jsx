@@ -1,14 +1,14 @@
 
-// src/components/Location.jsx
+
 
 import React from 'react';
 import { FaHome, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const Location = () => {
   return (
-    <div className="w-[90%] mx-auto my-10  p-5 rounded-md flex flex-col">
+    <div className="w-[90%] mx-auto my-10 p-5 rounded-md flex flex-col">
       {/* Grid */}
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Column 1: Contact Info */}
         <div className="space-y-4">
           <div className="flex items-start space-x-3">

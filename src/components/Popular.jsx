@@ -3,7 +3,7 @@ import React from 'react';
 const destinations = [
   {
     id: 1,
-    image: '/images/pop1.jpg',
+    image: `${process.env.PUBLIC_URL}/images/pop1.jpg`,
     title: 'Diani Beach Paradise',
     location: 'Ukunda, Kenya',
     duration: '5 days and 4 nights',
@@ -14,7 +14,7 @@ const destinations = [
   },
   {
     id: 2,
-    image: '/images/pop2.jpg',
+    image: `${process.env.PUBLIC_URL}/images/pop2.jpg`,
     title: 'Msambweni Beach',
     location: 'Kwale County',
     duration: '4 days and 3 nights',
@@ -25,7 +25,7 @@ const destinations = [
   },
   {
     id: 3,
-    image: '/images/pop3.jpg',
+    image: `${process.env.PUBLIC_URL}/images/pop3.jpg`,
     title: 'Watamu Beach & Marine Park',
     location: 'Kilifi County',
     duration: '3 days and 2 nights',
@@ -36,8 +36,8 @@ const destinations = [
   },
   {
     id: 4,
-    image: '/images/pop4.jpg',
-    title: 'Bamburi Beach  ',
+    image: `${process.env.PUBLIC_URL}/images/pop4.jpg`,
+    title: 'Bamburi Beach',
     location: 'Mombasa County',
     duration: '2 days and 1 night',
     date: '18.07.2025',
@@ -47,7 +47,7 @@ const destinations = [
   },
   {
     id: 5,
-    image: '/images/pop5.jpg',
+    image: `${process.env.PUBLIC_URL}/images/pop5.jpg`,
     title: 'Lamu Cultural Escape',
     location: 'Lamu Island, Kenya',
     duration: '4 days and 3 nights',
@@ -58,7 +58,7 @@ const destinations = [
   },
   {
     id: 6,
-    image: '/images/pop6.jpg',
+    image: `${process.env.PUBLIC_URL}/images/pop6.jpg`,
     title: 'Mida Creek',
     location: 'Kilifi County',
     duration: '3 days and 2 nights',
