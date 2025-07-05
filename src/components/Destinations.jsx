@@ -6,21 +6,21 @@ const destinations = [
     title: "Diani Beach",
     county: "Kwale",
     price: "Ksh:25000",
-    image: "/diani.jpg"
+    image: "./diani.jpg"
   },
   { 
     id: 2,
     title: "Fort Jesus",
     county: "Mombasa",
     price: "Ksh:20000",
-    image: "/fort.jpg"
+    image: "./fort.jpg"
   },
   { 
     id: 3,
     title: "Mamba Park",
     county: "Kilifi",
     price: "Ksh:22000",
-    image: "/mamba.jpg"
+    image: "./mamba.jpg"
   }
 ];
 

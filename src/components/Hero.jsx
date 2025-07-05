@@ -3,7 +3,7 @@ import React from 'react'
 const Hero = () => {
   return (
     <div className="w-full   h-screen bg-cover bg-center flex flex-col text-white text-center items-center justify-center px-4 font-poppins"
-    style={{backgroundImage: "url('/Hero.jpg')",}}>
+    style={{backgroundImage: "url('./Hero.jpg')",}}>
 
         <p className=" text-lg tracking-widest uppercase mb-4">Escape the Ordinary</p>
         <h1 className='text-5xl md:text-6xl font-bold leading-tight '>Explore Kenyan Wonder</h1>
