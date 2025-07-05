@@ -22,7 +22,7 @@ const Addition = () => {
       {/* Right Image Section */}
       <div className="md:w-1/2">
         <img
-          src="./images/addition.jpg" // Replace with your image path
+          src="images/addition.jpg" // Replace with your image path
           alt="Custom Package"
           className="w-full h-auto object-cover"
         />
