@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import React, { useState } from 'react'
 import { FaFacebookF, FaTwitter, FaGlobe, FaBehance } from 'react-icons/fa'
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
@@ -5,6 +6,38 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  //showing login/signup and logout
+
+  const [isLoggedIn, setIsLoggedIn ]= useState(!! localStorage.getItem('accessToken'));
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setIsLoggedIn(false);
+    window.dispatchEvent(new Event("storage"));
+
+  };
+
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem('accessToken');
+      setIsLoggedIn(!!token);
+    };
+  
+    checkAuth();
+  
+    window.addEventListener('storage', checkAuth);
+  
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+    };
+  }, []);
+  
+
+
+  
 
   return (
     <div className='w-full z-50'>
@@ -39,6 +72,17 @@ const Navbar = () => {
           <Link to='/hotels' className='hover:text-yellow-400 transition'>Hotels</Link>
           <Link to='/blog' className='hover:text-yellow-400 transition'>Blog</Link>
           <Link to='/contact' className='hover:text-yellow-400 transition'>Contact</Link>
+          <Link to='/book-now' className='hover:text-yellow-400 transition'>Book Now</Link>
+
+
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className='hover:text-yellow-400 transition upperscase'>SIGN OUT</button>
+          ):(<>
+          <Link to='/login' className='hover:text-yellow-400 transition'>Sign In</Link>
+          <Link to='/signup' className='hover:text-yellow-400 transition'>Signup</Link>
+          </>)}
+          
+
         </div>
       </nav>
 
@@ -51,6 +95,31 @@ const Navbar = () => {
           <Link to="/hotels" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Hotels</Link>
           <Link to="/blog" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link to="/contact" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link to="/book-now" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Book Now</Link>
+
+          {isLoggedIn? (
+            <button onClick={() => {
+              handleLogout();
+              setIsOpen(false);
+            }} 
+            className="block hover:text-yellow-400"
+            >
+              SIGN OUT
+              </button>):(
+                <>
+
+<Link to="/login" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Sign In</Link>
+<Link to="/signup" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Signup</Link>
+                
+                </>
+
+          )}
+
+
+
+          
+
+
         </div>
       )}
     </div>

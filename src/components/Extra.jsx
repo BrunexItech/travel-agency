@@ -51,27 +51,6 @@ const Testimonials = () => {
       image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
       rating: 2,
     },
-    {
-      id: 7,
-      name: 'Christon Hall',
-      text:
-        'Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.',
-      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
-      rating: 4,
-    },
-    {
-      id: 8,
-      name: 'Rhoda Aquilla',
-      text:
-        'A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.',
-      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
-      rating: 3,
-    },
-
-
-
-
-
   ];
 
   const [isMobile, setIsMobile] = useState(false);
@@ -185,3 +164,27 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [ "./src/**/*.{js,jsx,ts,tsx}",],
+    theme: {
+      extend: {fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
+    },
+    plugins: [],
+  }
+  
+
+
+
+
+
+
+
+  
