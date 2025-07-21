@@ -11,7 +11,7 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:8000/api/password-reset/', {
+      const res = await axios.post('https://auth-backend-wfdf.onrender.com/api/password-reset/', {
         email,
       });
 

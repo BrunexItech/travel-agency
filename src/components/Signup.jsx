@@ -30,10 +30,12 @@ const Signup = () => {
     }
 
     try {
-      await axios.post('http://localhost:8000/api/signup/', {
+      await axios.post('https://auth-backend-wfdf.onrender.com/api/signup/', {
         email: formData.email,
         username: formData.username,
         password: formData.password
+      },{
+        withCredentials: true
       });
 
 

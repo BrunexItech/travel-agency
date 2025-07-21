@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/api/login/', {
+      const response = await axios.post('https://auth-backend-wfdf.onrender.com/api/login/', {
         email: formData.email,
         password: formData.password
       });

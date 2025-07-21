@@ -27,7 +27,7 @@ const BookNow = () => {
       const token = localStorage.getItem('accessToken');
 
       const response = await axios.post(
-        'http://localhost:8000/api/book-now/',
+        'https://auth-backend-wfdf.onrender.com/api/book-now/',
         {
           destination: formData.destination,
           date: formData.date,
