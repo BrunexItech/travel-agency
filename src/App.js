@@ -15,10 +15,14 @@ import BookNow from './pages/BookNow';
 import ProtectedRoute from './components/ProtectedRoute';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import ProfilePage from './components/ProfilePage';
+import EditProfile from './components/EditProfilePage';
+import MyBookings from './components/MyBookings';
+import Help from './components/Help';
 
 function App() {
   return (
-    <Router basename="/travel-agency">
+    <Router >
       <ScrollToTop />
       <Navbar />
       <Routes>
@@ -28,6 +32,9 @@ function App() {
         <Route path="/packages" element={<Packages />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/hotels" element={<Hotels />} />
+        <Route path='/edit-profile' element={<EditProfile />}/>
+        <Route path='/my-bookings' element={<MyBookings/>}/>
+        <Route path='/help' element={<Help/>}/>
         <Route path="/book-now" element ={
           <ProtectedRoute>
             <BookNow/>
@@ -36,6 +43,7 @@ function App() {
         <Route path="/login"  element={<Login/>}/>
         <Route path="/forgot-password" element ={<ForgotPassword/>}/>
         <Route path="/reset-password/:uidb64/:token" element={<ResetPassword/>}/>
+        <Route path="/profile" element = {<ProfilePage/>}/>
       </Routes>
       <Footer />
     </Router>

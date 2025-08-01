@@ -22,17 +22,21 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://auth-backend-wfdf.onrender.com/api/login/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/login/', {
         email: formData.email,
         password: formData.password
       });
 
       const data = response.data;
 
+//storing the tokens
       localStorage.setItem('accessToken', data.access);
       localStorage.setItem('refreshToken', data.refresh);
 
       window.dispatchEvent(new Event("storage"));
+
+      //notify other components that login happened 
+      window.dispatchEvent(new Event("login"))
 
       
       navigate('/');
@@ -91,3 +95,6 @@ const Login = () => {
 };
 
 export default Login;
+
+
+

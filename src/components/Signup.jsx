@@ -10,16 +10,34 @@ const Signup = () => {
     email: '',
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    address:'',
+    bio:'',
+    profile_image:null //file upload
   });
 
   const navigate = useNavigate();
 
+
   const handleChange = (e) => {
+    //handling the image
+    if (e.target.name === 'profile_image'){
+      setFormData({
+        ...formData,
+        profile_image:e.target.files[0]
+      });
+    }
+
+    //handling normal data
+    else{
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  }
   };
 
   const handleSubmit = async (e) => {
@@ -29,14 +47,30 @@ const Signup = () => {
       return;
     }
 
+
+    //for handling the optional and compulsory fields
+    const submissionData = new FormData();
+    submissionData.append("email", formData.email);
+    submissionData.append('username' , formData.username);
+    submissionData.append("password", formData.password);
+    submissionData.append("first_name", formData.first_name);
+    submissionData.append("last_name", formData.last_name);
+    submissionData.append("phone_number", formData.phone_number);
+
+    // for the optional fields 
+
+    if(formData.address) submissionData.append('address', formData.address);
+    if(formData.bio) submissionData.append('bio', formData.bio);
+    if(formData.profile_image) submissionData.append('profile_image', formData.profile_image);
+
     try {
-      await axios.post('https://auth-backend-wfdf.onrender.com/api/signup/', {
-        email: formData.email,
-        username: formData.username,
-        password: formData.password
-      },{
-        withCredentials: true
-      });
+      await axios.post('http://127.0.0.1:8000/api/signup/',submissionData, {
+        headers:{'Content-Type': 'multipart/form-data',}
+        
+      },
+      
+        //withCredentials: true
+      );
 
 
       toast.success('Signup successful!');
@@ -76,6 +110,36 @@ const Signup = () => {
             required
           />
           <input
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              value={formData.first_name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+          />
+
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              value={formData.last_name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+
+            <input
+              type="text"
+              name="phone_number"
+              placeholder="Phone Number"
+              value={formData.phone_number}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+
+          <input
             type="password"
             name="password"
             placeholder="Password"
@@ -93,6 +157,40 @@ const Signup = () => {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
+
+          <input
+            type="text"
+            name="address"
+            placeholder="Address (optional)"
+            value={formData.address}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg"
+          />
+
+          <textarea
+          name="bio"  placeholder="Bio (optional)" value={formData.bio} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg">
+          </textarea>
+
+        {/*customizing the image file*/}
+
+         <div>
+          <label htmlFor='profileImage' className='block w-full text-center px-4 py-2 bg-yellow-400 rounded-lg cursor-pointer hover:bg-yellow-700 transition'>
+            Upload Profile Photo
+          </label>
+          <input type='file' id='profileImage' name='profile_image' accept='image/*' onChange={handleChange} className='hidden'/>
+          {formData.profile_image && (
+            <p className="mt-2 text-sm text-gray-600">Selected:{formData.profile_image.name}</p>
+          )}
+         </div>
+
+
+          
+
+          
+
+
+
+
           <button
             type="submit"
             className="w-full bg-yellow-400 text-white py-2 rounded-lg hover:bg-yellow-700 transition duration-300"
@@ -111,3 +209,9 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+
+
+

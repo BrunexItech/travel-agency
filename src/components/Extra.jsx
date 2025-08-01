@@ -1,190 +1,232 @@
-import React, { useState, useEffect } from 'react';
-import { FaStar, FaRegStar } from 'react-icons/fa';
 
-const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Christon Hall',
-      text:
-        'Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.',
-      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
-      rating: 4,
-    },
-    {
-      id: 2,
-      name: 'Rhoda Aquilla',
-      text:
-        'A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.',
-      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
-      rating: 3,
-    },
-    {
-      id: 3,
-      name: 'David Alba',
-      text:
-        'Learning never stops, and growth is the key to success. Keep pushing your limits every day!',
-      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
-      rating: 5,
-    },
-    {
-      id: 4,
-      name: 'Clara Til',
-      text:
-        'Consistency is what transforms average into excellence. Keep going, you are doing great!',
-      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
-      rating: 2,
-    },
-    {
-      id: 5,
-      name: 'Bonface Tim',
-      text:
-        'Learning never stops, and growth is the key to success. Keep pushing your limits every day!',
-      image: `${process.env.PUBLIC_URL}/images/man.jpg`,
-      rating: 4,
-    },
-    {
-      id: 6,
-      name: 'Stacey Depy',
-      text:
-        'Consistency is what transforms average into excellence. Keep going, you are doing great!',
-      image: `${process.env.PUBLIC_URL}/images/woman.jpg`,
-      rating: 2,
-    },
-  ];
+/*import React, { useState } from 'react';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+const BookNow = () => {
+  const [formData, setFormData] = useState({
+    destination: '',
+    date: '',
+    phone_number: '',
+    number_of_travelers: '',
+    group_type:'',
+    duration:'',
+    package:'',
+    special_requests:'',
 
-    checkSize();
-    window.addEventListener('resize', checkSize);
+  });
 
-    return () => window.removeEventListener('resize', checkSize);
-  }, []);
+  const navigate = useNavigate();
 
-  const pairs = [];
-  if (isMobile) {
-    testimonials.forEach((t) => pairs.push([t]));
-  } else {
-    for (let i = 0; i < testimonials.length; i += 2) {
-      pairs.push(testimonials.slice(i, i + 2));
-    }
-  }
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === pairs.length - 1 ? 0 : prevIndex + 1
+    try {
+      const token = localStorage.getItem('accessToken');
+
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/book-now/',
+        {
+          destination: formData.destination,
+          date: formData.date,
+          phone_number: formData.phone_number,
+          number_of_travelers: formData.number_of_travelers,
+          group_type: formData.group_type,
+          duration: formData.duration,
+          package: formData.package,
+          special_requests: formData.special_requests,
+
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
       );
-    }, 6000);
 
-    return () => clearInterval(interval);
-  }, [pairs.length]);
+      console.log('Booking successful:', response.data);
+
+      toast.success('Your trip has been booked!', {
+        position: 'top-center',
+        autoClose: 3000,
+      });
+
+      setTimeout(() => {
+        navigate('/');
+      }, 4000);
+    } catch (error) {
+      console.error('Booking error:', error);
+      if (error.response) {
+        alert('Booking failed: ' + error.response.data.detail);
+      } else {
+        alert('An unexpected error occurred');
+      }
+    }
+  };
 
   return (
-    <div className="py-16 bg-gray-100 px-4">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mb-2">Testimonial from our Clients</h2>
-        <p className="text-gray-600 max-w-xl mx-auto">
-          We value our clients&apos; feedback and love sharing what they say about us.
-        </p>
-      </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-xl">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Book Your Trip
+        </h2>
 
-      <div className="max-w-5xl mx-auto overflow-hidden">
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{
-            width: `${pairs.length * 100}%`,
-            transform: `translateX(-${currentIndex * (100 / pairs.length)}%)`,
-          }}
-        >
-          {pairs.map((pair, pairIndex) => (
-            <div
-              key={pairIndex}
-              className="flex gap-8 w-full flex-shrink-0 px-4"
-              style={{ width: `${100 / pairs.length}%` }}
-            >
-              {pair.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className={`bg-white rounded shadow p-4 flex items-center gap-4 ${
-                    isMobile ? 'basis-full' : 'basis-1/2'
-                  }`}
-                >
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-20 h-20 rounded-full object-cover"
-                  />
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Destination
+            </label>
+            <input
+              type="text"
+              name="destination"
+              value={formData.destination}
+              onChange={handleChange}
+              placeholder="Enter destination"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
 
-                  <div>
-                    <p className="text-gray-600 mb-2 pr-4">"{testimonial.text}"</p>
-                    <h3 className="font-bold text-lg mb-2">{testimonial.name}</h3>
-                    <div className="flex gap-1">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <span
-                          key={star}
-                          className={
-                            star <= testimonial.rating
-                              ? 'text-yellow-400'
-                              : 'text-gray-400'
-                          }
-                        >
-                          {star <= testimonial.rating ? <FaStar /> : <FaRegStar />}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Date
+            </label>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              min = {new Date().toISOString().split('T')[0]}//disables past dates
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+              placeholder="Enter phone number"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Number of Travelers
+            </label>
+            <input
+              type="number"
+              name="number_of_travelers"
+              value={formData.number_of_travelers}
+              onChange={handleChange}
+              placeholder="Enter number of travelers"
+              min="1"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+
+
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Group Type
+            </label>
+            <select
+              name="group_type"
+              value={formData.group_type}
+              onChange={handleChange}
+              className="w-full border   border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              >
+              <option >Select group type</option>
+              <option value="solo" >Solo</option>
+              <option value="couple" >Couple</option>
+              <option value="family" >Family</option>
+              <option value="friends" >Friends</option>
+              <option value="corporate" >Corporate</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Trip Duration
+            </label>
+            <select
+              name="duration"
+              value={formData.duration}
+              onChange={handleChange}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              >
+              <option value="">Select duration</option>
+              <option value="1">1 Day</option>
+              <option value="2">2 Days</option>
+              <option value="3">3 Days</option>
+              <option value="4">4 Days</option>
+              <option value="5">5 Days</option>
+              <option value="6">6 Days</option>
+              <option value="7">7 Days</option>
+              <option value="14">2 Weeks</option>
+            </select>
+          </div>
+
+          <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Select Package
+              </label>
+              <select
+                name="package"
+                value={formData.package}
+                onChange={handleChange}
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+               >
+                <option value="">Select package</option>
+                <option value="budget">Budget Safari</option>
+                <option value="luxury">Luxury Safari</option>
+                <option value="combo">Family Safari</option>
+                <option value="honeymoon">Honeymoon Safari</option>
+              </select>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="flex justify-center mt-6 gap-2">
-        {pairs.map((_, idx) => (
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Special Requests
+              </label>
+              <textarea
+                name="special_requests"
+                value={formData.special_requests}
+                onChange={handleChange}
+                placeholder="Any special requests?"
+                rows="4"
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              />
+            </div>
+
+
           <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-3 h-3 rounded-full ${
-              idx === currentIndex ? 'bg-yellow-400' : 'bg-gray-400'
-            }`}
-          ></button>
-        ))}
+            type="submit"
+            className="w-full bg-yellow-400 text-white font-semibold py-3 rounded-lg hover:bg-yellow-700 transition duration-300"
+          >
+            Book Now
+          </button>
+        </form>
+        <ToastContainer />
       </div>
     </div>
   );
 };
 
-export default Testimonials;
-
-
-
-
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-    content: [ "./src/**/*.{js,jsx,ts,tsx}",],
-    theme: {
-      extend: {fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
-    },
-    },
-    plugins: [],
-  }
-  
-
-
-
-
-
-
-
-  
+export default BookNow;
+*/
