@@ -45,12 +45,12 @@ const Login = () => {
 
 
       // success login
-      toast.success('Login successful! Redirecting...', {autoClose:4000,});
+      toast.success('Login successful! Redirecting...', {autoClose:2500,});
 
       setTimeout(()=> {
         navigate('/');
 
-      }, 4000);
+      }, 3000);
 
       
       

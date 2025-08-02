@@ -86,12 +86,12 @@ const EditProfile = () => {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       });
-      toast.success('Profile updated successfully!');
+      toast.success('Profile updated successfully!', {autoClose:2500,});
 
       setTimeout(()=> {
         navigate('/profile'); // redirect to profile view page
 
-      }, 4000);
+      }, 3000);
 
     } catch (error) {
       console.error('Update failed:', error);
