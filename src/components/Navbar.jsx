@@ -154,7 +154,7 @@ const Navbar = () => {
           {isLoggedIn && (
             <div className="flex flex-col items-center space-y-2">
               <img src={profileImage} alt="Profile" className="w-16 h-16 rounded-full border-2 border-yellow-400 object-cover" />
-              <span className="text-yellow-400 font-semibold">Hello, {userName}</span>
+              <span className="text-yellow-400 normal-case font-semibold">Hello, {userName}</span>
             </div>
           )}
 
@@ -168,7 +168,7 @@ const Navbar = () => {
 
           {isLoggedIn ? (
             <>
-              <Link to="/profile" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile</Link>
+              <Link to="/profile" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>View Profile</Link>
               <Link to="/my-bookings" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>My Bookings</Link>
               <Link to="/help" className="block hover:text-yellow-400" onClick={() => setIsOpen(false)}>Help / Support</Link>
               <button onClick={() => { handleLogout(); setIsOpen(false); }} className="block hover:text-yellow-400">SIGN OUT</button>
