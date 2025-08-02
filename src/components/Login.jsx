@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
@@ -40,8 +43,17 @@ const Login = () => {
       //notify other components that login happened 
       window.dispatchEvent(new Event("login"))
 
+
+      // success login
+      toast.success('Login successful! Redirecting...', {autoClose:4000,});
+
+      setTimeout(()=> {
+        navigate('/');
+
+      }, 4000);
+
       
-      navigate('/');
+      
     } catch (error) {
       console.error('Login error:', error);
       if (error.response) {

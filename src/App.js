@@ -19,9 +19,12 @@ import ProfilePage from './components/ProfilePage';
 import EditProfile from './components/EditProfilePage';
 import MyBookings from './components/MyBookings';
 import Help from './components/Help';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
+    <>
     <Router >
       <ScrollToTop />
       <Navbar />
@@ -47,6 +50,9 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+
+   <ToastContainer position = 'top-center'/>
+   </>
   );
 }
 

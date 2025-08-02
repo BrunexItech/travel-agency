@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
@@ -83,8 +86,13 @@ const EditProfile = () => {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       });
-      alert('Profile updated successfully!');
-      navigate('/profile'); // redirect to profile view page
+      toast.success('Profile updated successfully!');
+
+      setTimeout(()=> {
+        navigate('/profile'); // redirect to profile view page
+
+      }, 4000);
+
     } catch (error) {
       console.error('Update failed:', error);
       alert('Something went wrong. Try again.');
