@@ -4,6 +4,8 @@ import {useNavigate } from 'react-router-dom';
 import {toast ,ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +66,7 @@ const Signup = () => {
     if(formData.profile_image) submissionData.append('profile_image', formData.profile_image);
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/signup/',submissionData, {
+      await axios.post(`${BASE_URL}/api/signup/`, submissionData, {
         headers:{'Content-Type': 'multipart/form-data',}
         
       },

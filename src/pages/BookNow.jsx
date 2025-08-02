@@ -7,6 +7,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const BookNow = () => {
   const [formData, setFormData] = useState({
@@ -68,7 +70,7 @@ const BookNow = () => {
     try {
       const token = localStorage.getItem('accessToken');
       const response = await axios.post(
-        'http://127.0.0.1:8000/api/book-now/',
+        `${BASE_URL}/api/book-now/`,
         formData,
         {
           headers: {

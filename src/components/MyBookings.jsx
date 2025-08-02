@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const MyBookings = () => {
   const [upcomingBookings, setUpcomingBookings] = useState([]);
@@ -9,7 +11,7 @@ const MyBookings = () => {
 
   useEffect(() => {
     // Fetch upcoming bookings
-    axios.get("http://127.0.0.1:8000/api/bookings/upcoming/", {
+    axios.get(`${BASE_URL}/api/bookings/upcoming/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -18,7 +20,7 @@ const MyBookings = () => {
     .catch((err) => console.error("Upcoming Error:", err));
 
     // Fetch booking history
-    axios.get("http://127.0.0.1:8000/api/bookings/history/", {
+    axios.get(`${BASE_URL}/api/bookings/history/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const ResetPassword = () => {
   const { uidb64, token } = useParams();
@@ -24,7 +26,7 @@ const ResetPassword = () => {
 
     try {
       const res = await axios.post(
-        `http://127.0.0.1:8000/api/password-reset-confirm/${uidb64}/${token}/`,
+        `${BASE_URL}/api/password-reset-confirm/${uidb64}/${token}/`,
         { password }
       );
       setMessage(res.data.message || 'Password reset successfully');

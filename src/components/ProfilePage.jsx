@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
@@ -10,7 +12,7 @@ const ProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('accessToken');
-        const response = await axios.get('http://127.0.0.1:8000/api/profile/', {
+        const response = await axios.get(`${BASE_URL}/api/profile/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

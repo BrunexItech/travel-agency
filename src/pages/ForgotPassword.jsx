@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -11,7 +13,7 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/password-reset/', {
+      const res = await axios.post(`${BASE_URL}/api/password-reset/`, {
         email,
       });
 

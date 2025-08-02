@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const EditProfile = () => {
   const [profile, setProfile] = useState({
@@ -22,7 +24,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/profile/', {
+        const response = await axios.get(`${BASE_URL}/api/profile/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
@@ -75,7 +77,7 @@ const EditProfile = () => {
               console.log(pair[0] + ': ' + pair[1]);
             }
 
-      await axios.patch('http://127.0.0.1:8000/api/profile/me/update/', formData, {
+      await axios.patch(`${BASE_URL}/api/profile/me/update/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,

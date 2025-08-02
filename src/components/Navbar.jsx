@@ -5,6 +5,8 @@ import { FaFacebookF, FaTwitter, FaGlobe, FaBehance } from 'react-icons/fa';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +37,7 @@ const Navbar = () => {
       const token = localStorage.getItem('accessToken');
       if (token) {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/api/profile/', {
+          const response = await axios.get(`${BASE_URL}/api/profile/`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUserName(response.data.first_name);
